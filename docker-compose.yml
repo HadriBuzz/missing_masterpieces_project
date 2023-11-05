@@ -1,0 +1,19 @@
+version: "3"
+services:
+  streamlit:
+    build:
+      context: ./streamlit
+    image: missing_masterpieces/streamlit_interface
+    container_name: streamlit-for-adding-pieces
+    ports:
+      - "8701:8701"
+
+  backend-sqlite:
+    build:
+      context: ./database
+    image: missing_masterpieces/backend_sqlite
+    container_name: backend-sqlite-fastapi
+    ports:
+      - "8702:8702"
+    volumes:
+      - ./sqlite_database:/code/source/volume
