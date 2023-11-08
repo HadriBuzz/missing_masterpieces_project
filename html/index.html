@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Missing masterpieces</title>
         <link rel="stylesheet" href="styles.css">
-        <script src="action.js"></script>
+        <script src="javascript.js"></script>
     </head>
     <body>
         <h3>To not forget masterpieces that were stolen or destroyed, because it is humanity legacy</h3>
@@ -19,14 +19,14 @@
                     name="ip1"
                     placeholder="All"
                 >
-                <label for="s2">Select piece creation date (eg: 1913, 19XX (between 1900 & 1999), or 1XXX (between 1000 & 2000)), or leave empty for no filter</label>
+                <label for="s2">Select piece creation date (eg: 1913, 19XX (between 1900 & 1999), or 1XXX (between 1000 & 2000)). Leave empty for no filter</label>
                 <input
                     type="text"
                     id="ip2"
                     name="ip2"
                     placeholder="18XX"
                 >
-                <label for="s3">Select piece disparition date (eg: 1867, 18XX, XXXX)</label>
+                <label for="s3">Select piece disparition date (eg: 1867, 18XX, XXXX). Leave empty for no filter</label>
                 <input
                     type="text"
                     id="ip3"
@@ -34,7 +34,7 @@
                     placeholder="201X"
                 >
                
-                <button id="btn_id" type="button" onclick="SubmitVars()">Search</button> 
+                <button id="btn_id" type="button" onclick="SearchDatabase()">Search</button> 
 
                 <p> Results: <data id="res_len"></data> </p>
             </form>

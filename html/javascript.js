@@ -1,4 +1,4 @@
-async function SubmitVars() {
+async function SearchDatabase() {
     
     // data sent from the POST request
     var formData = new FormData(document.forms[0])
