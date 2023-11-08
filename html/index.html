@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Missing masterpieces</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="action.js"></script>
+    </head>
+    <body>
+        <h3>To not forget masterpieces that were stolen or destroyed, because it is humanity legacy</h3>
+        <div class="container">
+            <form action='' method="POST" name="f1" id="f1" class="form-horizontal" role="form" >
+                <label for="s1">Select an author, paintor, scultor, etc... (eg: Manet, Monnet, etc...). "All" if not inspired</label>
+                <input
+                    type="text"
+                    id="ip1"
+                    name="ip1"
+                    placeholder="All"
+                >
+                <label for="s2">Select piece creation date (eg: 1913, 19XX (between 1900 & 1999), or 1XXX (between 1000 & 2000)), or leave empty for no filter</label>
+                <input
+                    type="text"
+                    id="ip2"
+                    name="ip2"
+                    placeholder="18XX"
+                >
+                <label for="s3">Select piece disparition date (eg: 1867, 18XX, XXXX)</label>
+                <input
+                    type="text"
+                    id="ip3"
+                    name="ip3"
+                    placeholder="201X"
+                >
+               
+                <button id="btn_id" type="button" onclick="SubmitVars()">Search</button> 
+
+                <p> Results: <data id="res_len"></data> </p>
+            </form>
+           
+            
+        </div>
+    
+        
+    <p> Author:</p>
+    <p id="author_name"></p>
+    <p> Creation date:</p>
+    <p id="creation_date"></p>
+    </body>
+</html>
