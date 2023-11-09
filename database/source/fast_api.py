@@ -7,7 +7,6 @@ class User_input(BaseModel):
     ip1: str
     ip2: str
     ip3: str
-    ip4: int
 
 
 app = FastAPI()
@@ -24,7 +23,7 @@ app.add_middleware(
 @app.post("/return_sum")
 def return_sum(input: User_input):
     json_object = {
-        "res_length_max": input.ip4,
+        "res_length_max": 3,
         "res": [
             {
                 "name": "Chez Tortoni",

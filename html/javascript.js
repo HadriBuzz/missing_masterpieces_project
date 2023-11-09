@@ -33,15 +33,31 @@ async function SearchDatabase() {
   let parent = document.getElementById("parent_results");
 
   for (let i = 0; i <= res_length; i++) {
-	  let div = document.createElement('div');
+    // Piece div creation
+	let div = document.createElement('div');
     div.setAttribute('class', "piece_detail");
-    let title = document.createElement('h3');
+    // Piece title creation
+    let title = document.createElement('h4');
     title.textContent = responseJson.res[i].name;
     div.appendChild(title);
-    let p = document.createElement('p');
-	  p.textContent = responseJson.res[i].author;
-    div.appendChild(p);
-	  parent.appendChild(div);
+
+    let information = document.createElement('p');
+    information.textContent = responseJson.res[i].author + " - " + responseJson.res[i].creation_date ;
+
+    let link = document.createElement('a');
+    link.href = responseJson.res[i].url;
+    link.target="_blank";
+
+    let image = document.createElement('img');
+    image.src = "images/cheztortoni.jpg";
+
+    link.appendChild(image)
+    
+    div.appendChild(information);
+
+    div.appendChild(link);
+
+	parent.appendChild(div);
 }
 }
 
