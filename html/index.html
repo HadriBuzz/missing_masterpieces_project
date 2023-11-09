@@ -9,8 +9,9 @@
         <script src="javascript.js"></script>
     </head>
     <body>
-        <h3>To not forget masterpieces that were stolen or destroyed, because it is humanity legacy</h3>
+        <h2>To not forget masterpieces that were stolen or destroyed, because it is humanity legacy</h2>
         <div class="container">
+            
             <form action='' method="POST" name="f1" id="f1" class="form-horizontal" role="form" >
                 <label for="s1">Select an author, paintor, scultor, etc... (eg: Manet, Monnet, etc...). "All" if not inspired</label>
                 <input
@@ -19,19 +20,25 @@
                     name="ip1"
                     placeholder="All"
                 >
-                <label for="s2">Select piece creation date (eg: 1913, 19XX (between 1900 & 1999), or 1XXX (between 1000 & 2000)). Leave empty for no filter</label>
+                <label for="s2">Select piece creation date (eg: 1913, 19XX (between 1900 & 1999), or 1XXX (between 1000 & 1999)). Leave empty for no filter</label>
                 <input
                     type="text"
                     id="ip2"
                     name="ip2"
                     placeholder="18XX"
                 >
-                <label for="s3">Select piece disparition date (eg: 1867, 18XX, XXXX). Leave empty for no filter</label>
+                <label for="s3">Select piece disparition date (eg: 1867, 18XX, XXXX (Same principle as above)). Leave empty for no filter</label>
                 <input
                     type="text"
                     id="ip3"
                     name="ip3"
                     placeholder="201X"
+                >
+                <input
+                    type="text"
+                    id="ip4"
+                    name="ip4"
+                    placeholder="2"
                 >
                
                 <button id="btn_id" type="button" onclick="SearchDatabase()">Search</button> 
@@ -43,9 +50,8 @@
         </div>
     
         
-    <p> Author:</p>
-    <p id="author_name"></p>
-    <p> Creation date:</p>
-    <p id="creation_date"></p>
+   
+
+    <div id="parent_results"></div>
     </body>
 </html>

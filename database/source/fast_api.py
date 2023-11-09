@@ -7,6 +7,7 @@ class User_input(BaseModel):
     ip1: str
     ip2: str
     ip3: str
+    ip4: int
 
 
 app = FastAPI()
@@ -22,14 +23,31 @@ app.add_middleware(
 
 @app.post("/return_sum")
 def return_sum(input: User_input):
-    print(input.ip2)
-    res = input.ip3
     json_object = {
-        "res_length": 0,
-        "Author": input.ip1,
-        "Creation_date": input.ip2,
-        "Lost_date": input.ip3,
+        "res_length_max": input.ip4,
+        "res": [
+            {
+                "name": "Chez Tortoni",
+                "author": "Manet",
+                "creation_date": 1875,
+                "Lost_date": 1990,
+                "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Édouard_Manet%2C_Chez_Tortoni.jpg",
+            },
+            {
+                "name": "Le Christ dans la tempête sur la mer de Galilée",
+                "author": "Rembrandt",
+                "creation_date": 1633,
+                "lost_date": 1990,
+                "url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Rembrandt_Christ_in_the_Storm_on_the_Lake_of_Galilee.jpg",
+            },
+            {
+                "name": "Le Concert ",
+                "author": "Vermeer",
+                "creation_date": 1666,
+                "lost_date": 1990,
+                "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Vermeer_The_concert.JPG",
+            },
+        ],
     }
-    # with open("volume/res.json", "w") as outfile:
-    # outfile.write(json_object)
+
     return json_object
