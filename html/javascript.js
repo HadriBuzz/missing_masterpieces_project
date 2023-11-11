@@ -18,7 +18,7 @@ async function SearchDatabase() {
   });
       }
       catch(err) {
-        alert("The backend server is not available. Please check that is it started")
+        alert("Oops... Check that the backend server (uvicorn) is started and try again!")
         console.log("The error is: " + err);
         //document.getElementById("demo").innerHTML = err.message;
       }
@@ -53,7 +53,7 @@ async function SearchDatabase() {
     div.appendChild(title);
 
     let information = document.createElement('p');
-    information.textContent = piece.author + " - " + piece.creation_date ;
+    information.textContent = piece.author + " - " + piece.creation_date;
 
     let link = document.createElement('a');
     link.href = piece.url;
@@ -61,12 +61,22 @@ async function SearchDatabase() {
 
     let image = document.createElement('img');
     image.src = "images/" + (i + 1) + ".jpg";
+    //image.src = "images/" + (i + 1) + ".jpg";
 
-    link.appendChild(image)
-    
+    let description = document.createElement('p');
+    description.setAttribute('class', "piece_description");
+    description.textContent = "Here will come a description of the piece and detail, Here will come a description of the piece and detail, Here will come a description of the piece and detail"
+
+    let div_image_description = document.createElement('div');
+    div_image_description.setAttribute('class', "image_description");
+
+
+
+    link.appendChild(image);
+    div_image_description.appendChild(link);
+    div_image_description.appendChild(description);
+    div.appendChild(div_image_description);
     div.appendChild(information);
-
-    div.appendChild(link);
 
 	parent.appendChild(div);
 }
