@@ -9,15 +9,22 @@ async function SearchDatabase() {
             formData.getAll(key) : formData.get(key)]))
             
     var jsonreq = (`${JSON.stringify(obj)}`)
-
-    const response = await fetch('http://127.0.0.1:8000/return_sum/', {
-    method: "POST",
-    body: jsonreq,
-    headers: {"Content-type": "application/json; charset=UTF-8"}
-  })
-
+    
+    try {
+        var response = await fetch('http://127.0.0.1:8000/return_pieces/', {
+        method: "POST",
+        body: jsonreq,
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+  });
+      }
+      catch(err) {
+        alert("The backend server is not available. Please check that is it started")
+        console.log("The error is: " + err);
+        //document.getElementById("demo").innerHTML = err.message;
+      }
+    
   const responseJson = await response.json();
-  console.log(responseJson); // logs 'OK'
+  //console.log(responseJson); // logs 'OK'
   
   //var index_author = document.getElementById("author_name");
   //var index_creation = document.getElementById("creation_date"); 
@@ -31,25 +38,29 @@ async function SearchDatabase() {
   index_reslen.innerHTML = (res_length);
 
   let parent = document.getElementById("parent_results");
-
-  for (let i = 0; i <= res_length; i++) {
+  
+  document.querySelectorAll(".piece_detail").forEach(el => el.remove());
+  
+  for (let i = 0; i <= res_length - 1; i++) {
+    let piece = responseJson.res[i];
     // Piece div creation
 	let div = document.createElement('div');
     div.setAttribute('class', "piece_detail");
     // Piece title creation
     let title = document.createElement('h4');
-    title.textContent = responseJson.res[i].name;
+    
+    title.textContent = piece.name;
     div.appendChild(title);
 
     let information = document.createElement('p');
-    information.textContent = responseJson.res[i].author + " - " + responseJson.res[i].creation_date ;
+    information.textContent = piece.author + " - " + piece.creation_date ;
 
     let link = document.createElement('a');
-    link.href = responseJson.res[i].url;
+    link.href = piece.url;
     link.target="_blank";
 
     let image = document.createElement('img');
-    image.src = "images/cheztortoni.jpg";
+    image.src = "images/" + (i + 1) + ".jpg";
 
     link.appendChild(image)
     
