@@ -21,7 +21,7 @@ app.add_middleware(
 )
 
 
-@app.post("/return_pieces")
+@app.post("/return_pieces/")
 def return_sum(input: User_input):
     db_mg = (
         db_mngmt.database_manager()

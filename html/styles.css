@@ -53,11 +53,11 @@ input[type=text], select, textarea {
   .piece_description{
     font-style: italic;
     margin-left: 3%;
-    width: 60%;
+    width: 74%;
 }
   img {
     border-radius: 3px;
-    height: 6em;
+    width: 12%;
   }
 
   #min_cdate, #max_cdate, #min_ldate, #max_ldate {
