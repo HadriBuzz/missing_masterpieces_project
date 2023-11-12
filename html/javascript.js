@@ -7,7 +7,7 @@ async function SearchDatabase() {
     var obj = Object.fromEntries(Array.from(formData.keys())
         .map(key => [key, formData.getAll(key).length > 1 ?
             formData.getAll(key) : formData.get(key)]))
-            
+    console.log(obj)   
     var jsonreq = (`${JSON.stringify(obj)}`)
     
     try {
@@ -53,7 +53,7 @@ async function SearchDatabase() {
     div.appendChild(title);
 
     let information = document.createElement('p');
-    information.textContent = piece.author + " - " + piece.creation_date;
+    information.textContent = piece.author + " - " + piece.creation_date + " - " + piece.lost_date;
 
     let link = document.createElement('a');
     link.href = piece.url;
@@ -61,10 +61,8 @@ async function SearchDatabase() {
 
     let image = document.createElement('img');
     image.src = "images/" + (i + 1) + ".jpg";
-    const backup_url = "this.onerror=null;this.src='"+piece.url+"';";
-    image.setAttribute('onerror', backup_url) 
-    //image.onerror = "this.onerror=null;this.src="+piece.url;
-    //image.src = "images/" + (i + 1) + ".jpg";
+    //const backup_url = "this.onerror=null;this.src='"+piece.url+"';";
+    //image.setAttribute('onerror', backup_url);
 
     let description = document.createElement('p');
     description.setAttribute('class', "piece_description");

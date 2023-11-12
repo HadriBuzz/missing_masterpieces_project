@@ -56,7 +56,22 @@
                         placeholder="2013"
                     >
                 </div>
-
+                <div class="sorting_div">
+                    <label for="sorting_option">Select a sorting option:</label>
+                    <select name="sorting" id="sorting_option">
+                        <option value="">--Please choose a sorting option--</option>
+                        <option value="Name--Alphabetically">Name Alphabetically</option>
+                        <option value="Author--Alphabetically">Author Alphabetically</option>
+                        <option value="Creation date">Creation date</option>
+                        <option value="Lost date">Lost date</option>
+                    </select>
+                </div>
+                <div class="sorting_div">
+                    <input type="radio" name="order" id="order0" value=0 checked="checked">
+                    <label for="order0">Ascending</label>
+                    <input type="radio" name="order" id="order1" value=1>
+                    <label for="order1">Descending</label>
+                </div>
                 <div id="div_button">
                 <button id="btn_id" type="button" onclick="SearchDatabase()">Search</button> 
                 </div>
