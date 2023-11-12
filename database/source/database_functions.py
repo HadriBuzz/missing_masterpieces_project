@@ -15,13 +15,13 @@ class database_manager:
                 CREATION INT NOT NULL,
                 AUTHOR CHAR(50),
                 LOST INT NOT NULL,
-                URL TEXT);"""
+                URL TEXT,
+                COMMENT TEXT);"""
             )
         except Exception as e:
-            logging.info(f"Table already exists: {e}")
+            logging.warning(f"Table already exists: {e}")
         try:
             self.add_piece_from_raw_csv()
-            self.conn.commit()
         except Exception as e:
             logging.warning(f"Fail to load records: {e}")
         self.conn.close()
@@ -29,21 +29,24 @@ class database_manager:
     def add_piece_from_raw_csv(self):
         df = pd.read_csv("raw_pieces.csv")
         for index, row in df.iterrows():
+            print(row["name"])
             try:
                 self.conn.execute(
-                    f"INSERT INTO MISS_PIECES (ID,NAME,CREATION,AUTHOR,LOST,URL) VALUES ({row['piece_id']}, \
+                    f"INSERT INTO MISS_PIECES (ID,NAME,CREATION,AUTHOR,LOST,URL,COMMENT) VALUES ({row['piece_id']}, \
                     '{row['name']}', \
                     {row['created']}, \
                     '{row['author']}', \
                     {row['lost']},\
-                    '{row['url']}')"
+                    '{row['url']}',\
+                    '{row['comment']}')"
                 )
+                self.conn.commit()
             except Exception as e:
-                logging.info(f"Piece probably exists: {e}")
+                logging.warning(f"Piece probably exists: {e}")
 
     def get_all_records(self):
         cursor = self.conn.execute(
-            f"SELECT id, name, creation, author, lost, url from MISS_PIECES"
+            f"SELECT id, name, creation, author, lost, url, comment from MISS_PIECES"
         )
         pieces_dico = list()
         for row in cursor:
@@ -55,8 +58,13 @@ class database_manager:
                     "creation_date": row[2],
                     "lost_date": row[4],
                     "url": row[5],
+                    "comment": row[6],
                 }
             )
 
         self.conn.close()
         return pieces_dico
+
+
+db_mg = database_manager()
+db_mg.create_miss_pieces_table_from_raw_csv()

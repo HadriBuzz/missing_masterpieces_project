@@ -61,11 +61,14 @@ async function SearchDatabase() {
 
     let image = document.createElement('img');
     image.src = "images/" + (i + 1) + ".jpg";
+    const backup_url = "this.onerror=null;this.src='"+piece.url+"';";
+    image.setAttribute('onerror', backup_url) 
+    //image.onerror = "this.onerror=null;this.src="+piece.url;
     //image.src = "images/" + (i + 1) + ".jpg";
 
     let description = document.createElement('p');
     description.setAttribute('class', "piece_description");
-    description.textContent = "Here will come a description of the piece and detail, Here will come a description of the piece and detail, Here will come a description of the piece and detail"
+    description.textContent = piece.comment;
 
     let div_image_description = document.createElement('div');
     div_image_description.setAttribute('class', "image_description");
