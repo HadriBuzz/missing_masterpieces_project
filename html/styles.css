@@ -34,7 +34,9 @@ input[type=text], select, textarea {
   
   body{
     margin: 0 auto;
+    min-width:700px;
     width: 70%; 
+    background-color: rgb(180, 180, 180);
   }
 
   .piece_detail{
@@ -72,4 +74,13 @@ input[type=text], select, textarea {
   .sorting_div{
     width: 30%;
     display: inline-block;
+  }
+
+  .date_label{
+    font-size: small;
+  }
+
+  h2{
+    color: rgb(30, 30, 30);
+    text-align: center;
   }

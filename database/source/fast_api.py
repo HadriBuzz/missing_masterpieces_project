@@ -6,8 +6,12 @@ import database_functions as db_mngmt
 
 class User_input(BaseModel):
     ip1: str
-    ip2: str
-    ip3: str
+    ip2: int
+    ip3: int
+    ip4: int
+    ip5: int
+    order: str
+    sorting: str
 
 
 app = FastAPI()
@@ -26,7 +30,7 @@ def return_sum(input: User_input):
     db_mg = (
         db_mngmt.database_manager()
     )  # Class cannot be called outside this function because SQLite3 does not support the multi-threading brought by Fastapi
-    pieces_dico = db_mg.get_all_records()
+    pieces_dico = db_mg.get_all_records(input)
     dico_length = len(pieces_dico)
     json_object = {"res_length_max": dico_length, "res": pieces_dico}
     return json_object

@@ -60,9 +60,9 @@ async function SearchDatabase() {
     link.target="_blank";
 
     let image = document.createElement('img');
-    image.src = "images/" + (i + 1) + ".jpg";
-    //const backup_url = "this.onerror=null;this.src='"+piece.url+"';";
-    //image.setAttribute('onerror', backup_url);
+    image.src = piece.piece_id;
+    const backup_url = "this.onerror=null;this.src='"+piece.url+"';";
+    image.setAttribute('onerror', backup_url);
 
     let description = document.createElement('p');
     description.setAttribute('class', "piece_description");
@@ -83,3 +83,7 @@ async function SearchDatabase() {
 }
 }
 
+//window.addEventListener("click", () => {
+    //console.log('Event is going on!')
+    //displayText.innerHTML = "Hi " + storedValue;
+//})

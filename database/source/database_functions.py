@@ -44,9 +44,12 @@ class database_manager:
             except Exception as e:
                 logging.warning(f"Piece probably exists: {e}")
 
-    def get_all_records(self):
+    def get_all_records(self, input):
+        print(input.ip1)
         cursor = self.conn.execute(
-            f"SELECT id, name, creation, author, lost, url, comment from MISS_PIECES"
+            f"SELECT id, name, creation, author, lost, url, comment FROM MISS_PIECES \
+              WHERE (author LIKE '%{input.ip1}%' AND creation BETWEEN {input.ip2} AND {input.ip3}\
+              AND lost BETWEEN {input.ip4} AND {input.ip5}) ORDER BY {input.sorting} {input.order}"
         )
         pieces_dico = list()
         for row in cursor:
